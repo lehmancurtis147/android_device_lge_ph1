@@ -1,0 +1,57 @@
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := MSM8916
+TARGET_NO_BOOTLOADER := true
+
+# Platform
+TARGET_BOARD_PLATFORM := msm8916
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno306
+#TARGET_PLATFORM_DEVICE_BASE := /devices/soc
+
+# Architecture
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_CPU_VARIANT := cortex-a53
+TARGET_CPU_SMP := true
+ARCH_ARM_HAVE_TLS_REGISTER := true
+TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
+
+BOARD_BOOTIMAGE_PARTITON_SIZE := 0x004C00000
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x004C00000
+#BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 0x0UNKNOWN
+#BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0UNKNOWN
+#BOARD_CACHEIMAGE_PARTITION_SIZE    := 0x0UNKNOWN
+#BOARD_FLASH_BLOCK_SIZE := 0x0UNKNOWN
+
+BOARD_HAS_LARGE_FILESYSTEM := true
+TARGER_USERIMAGES_USE_EXT4 := true
+BOARD_SUPRESS_SECURE_ERASE := true
+
+# Android boot image creation
+TARGET_PREBUILT_KERNEL := device/lge/ph1/zIndex
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 user_debug=31 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=20M@0-0xffffffff androidboot.hardware=h1 androidboot.bootdevice=624000.ufshc androidboot.selinux=permissive dhash_entries=131072 ihash_entries=131072
+BOARD_KERNEL_BASE := 0x80000000
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt device/lge/h850/dtb.img
+
+# TWRP Flags
+TW_THEME := portrait_hdpi
+RECOVERY_SDCARD_ON_DATA := false
+BOARD_HAS_NO_REAL_SDCARD := false
+BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_RECOVERY_QCOM_RTC_FIX := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/module/g_android/parameters/file"
+TW_MAX_BRIGHTNESS := 255
+TW_DEFAULT_BRIGHTNESS := 162
+TW_SCREEN_BLANK_ON_BOOT := true
+TW_EXCLUDE_SUPERSU := true
+
+# Encryption support
+TW_INCLUDE_CRYPTO := true
+TARGET_HW_DISK_ENCRYPTION := true
+TARGET_KEYMASTER_WAIT_FOR_QSEE := true
+
+# Debug flags
+TWRP_INCLUDE_LOGCAT := true
+TARGET_USES_LOGD := true
